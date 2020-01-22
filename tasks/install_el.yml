@@ -1,0 +1,18 @@
+---
+# tasks file for azurecli - EL
+
+- name: Adding repository {{ azurecli_repo_el }} on EL based systems.
+  yum_repository:
+    name: "{{ azurecli_repo_el_name }}"
+    description: "{{ azurecli_repo_el_description }}"
+    baseurl: "{{ azurecli_repo_el }}"
+    gpgcheck: "{{ azurecli_repo_el_gpgcheck }}"
+    gpgkey: "{{ azurecli_el_gpg_key }}"
+    enabled: "{{ azurecli_repo_el_enabled }}"
+    file: "{{ azurecli_repo_el_filename }}"
+    state: "{{ azurecli_repo_desired_state }}"
+- name: Installing {{ azurecli_app_name }} on EL based systems.
+  yum:
+    name: "{{ azurecli_app_name }}"
+    state: "{{ azurecli_desired_state }}"
+    update_cache: yes
