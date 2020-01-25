@@ -24,7 +24,7 @@ def test_azurecli_binary_exists(host):
     host.file('/usr/bin/az').exists
 
 
-def test_java_binary_isfile(host):
+def test_azurecli_binary_isfile(host):
     assert host.file('/usr/bin/az').is_file
 
 
