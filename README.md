@@ -2,7 +2,7 @@
 
 # Ansible Role: azurecli
 
-Role to install (_by default_) `azure-cli` package for Debian based and EL based systems or uninstall (_if passed as var_) on **Debian** based and **EL** based systems.
+Role to install (_by default_) [azure-cli](https://github.com/Azure/azure-cli) package for Debian based and EL based systems or uninstall (_if passed as var_) on **Debian** based and **EL** based systems.
 
 ## Requirements
 
@@ -70,7 +70,7 @@ For default behaviour of role (i.e. installation of **azure-cli** package) in an
 ```yaml
 - hosts: servers
   roles:
-    - role: darkwizard242.azurecli
+    - darkwizard242.azurecli
 ```
 
 For customizing behavior of role (i.e. installation of latest **azure-cli** package) in ansible playbooks.
@@ -78,9 +78,9 @@ For customizing behavior of role (i.e. installation of latest **azure-cli** pack
 ```yaml
 - hosts: servers
   roles:
-    - role: darkwizard242.azurecli
-      vars:
-        azurecli_desired_state: latest
+    - darkwizard242.azurecli
+  vars:
+    azurecli_desired_state: latest
 ```
 
 For customizing behavior of role (i.e. un-installation of **azure-cli** package) in ansible playbooks.
@@ -88,9 +88,9 @@ For customizing behavior of role (i.e. un-installation of **azure-cli** package)
 ```yaml
 - hosts: servers
   roles:
-    - role: darkwizard242.azurecli
-      vars:
-        azurecli_desired_state: absent
+    - darkwizard242.azurecli
+  vars:
+    azurecli_desired_state: absent
 ```
 
 ## License
