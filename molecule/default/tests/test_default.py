@@ -5,28 +5,51 @@ import testinfra.utils.ansible_runner
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
-
-def test_azurecli_repofile_exists(host):
-    assert host.file('/etc/apt/sources.list.d/azure-cli.list').exists or \
-      host.file('/etc/yum.repos.d/azure-cli.repo').exists
-
-
-def test_azurecli_repofile_isfile(host):
-    assert host.file('/etc/apt/sources.list.d/azure-cli.list').is_file or \
-      host.file('/etc/yum.repos.d/azure-cli.repo').is_file
+PACKAGE = 'azure-cli'
+PACKAGE_BINARY = '/usr/bin/az'
+REPO_DEBIAN_FILE = '/etc/apt/sources.list.d/azure-cli.list'
+REPO_EL_FILE = '/etc/yum.repos.d/azure-cli.repo'
 
 
 def test_azurecli_package_installed(host):
-    assert host.package("azure-cli").is_installed
+    """
+    Tests if azure-cli package is installed.
+    """
+    assert host.package(PACKAGE).is_installed
 
 
 def test_azurecli_binary_exists(host):
-    host.file('/usr/bin/az').exists
+    """
+    Tests if az binary exists.
+    """
+    host.file(PACKAGE_BINARY).exists
 
 
 def test_azurecli_binary_isfile(host):
-    assert host.file('/usr/bin/az').is_file
+    """
+    Tests if az binary is a file type.
+    """
+    assert host.file(PACKAGE_BINARY).is_file
 
 
 def test_azurecli_binary_which(host):
-    assert host.check_output('which az') == '/usr/bin/az'
+    """
+    Tests the output to confirm az's binary location.
+    """
+    assert host.check_output('which az') == PACKAGE_BINARY
+
+
+def test_azurecli_repofile_exists(host):
+    """
+    Tests if azure-cli repo file exists.
+    """
+    assert host.file(REPO_DEBIAN_FILE).exists or \
+        host.file(REPO_EL_FILE).exists
+
+
+def test_azurecli_repofile_isfile(host):
+    """
+    Tests if azure-cli repo file is file type.
+    """
+    assert host.file(REPO_DEBIAN_FILE).is_file or \
+        host.file(REPO_EL_FILE).is_file
