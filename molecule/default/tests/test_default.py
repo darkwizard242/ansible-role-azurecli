@@ -52,4 +52,4 @@ def test_azurecli_repofile_isfile(host):
     Tests if azure-cli repo file is file type.
     """
     assert host.file(REPO_DEBIAN_FILE).is_file or \
-        host.file(REPO_DEBIAN_FILE).is_file
+        host.file(REPO_EL_FILE).is_file
