@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: azurecli
-  author: Ali Muhammad
+  author: darkwizard242
   description: Azure cli installation on Debian-based and EL-based systems.
   company: none
   license: MIT
