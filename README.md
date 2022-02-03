@@ -40,24 +40,24 @@ azurecli_repo_desired_state: present
 
 ### Variables table:
 
-Variable                               | Value (default)                                                                                                            | Description
--------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-azurecli_pre_reqs_debian               | apt-transport-https, curl, ca-certificates, lsb-release, gnupg                                                             | Package required by Azure CLI on Debain based systems.
-azurecli_pre_reqs_debian_desired_state | present                                                                                                                    | State of the azurecli_pre_reqs_debian_desired_state packages. Whether to install, verify if available or to uninstall (i.e. ansible apt module values: `present`, `latest`, or `absent`)
-azurecli_app_name                      | azure-cli                                                                                                                  | Name of Azure CLI package i.e. `azure-cli`
-azurecli_desired_state                 | present                                                                                                                    | State of the azurecli_app_name package (i.e. `azure-cli` package itself.). Whether to install, verify if available or to uninstall (i.e. ansible apt module values: `present`, `latest`, or `absent`)
-azurecli_debian_gpg_key                | <https://packages.microsoft.com/keys/microsoft.asc>                                                                        | Azure CLI GPG required on Debian based systems.
-azurecli_el_gpg_key                    | <https://packages.microsoft.com/keys/microsoft.asc>                                                                        | Azure CLI GPG required on EL based systems.
-azurecli_repo_debian                   | deb [arch={{ ansible_architecture }}] <https://packages.microsoft.com/repos/azure-cli/> {{ ansible_lsb['codename'] }} main | Repository URL for Debian based systems. Utilized facts such as `ansible_architecture`.
-azurecli_repo_debian_when_x86_64       | deb [arch=amd64] <https://packages.microsoft.com/repos/azure-cli/> {{ ansible_lsb['codename'] }} main                      | This variable is used only against systems that are x86_64 type as the architecture is overridden to `arch=amd64` as per Azure CLI's Installation steps.
-azurecli_repo_debian_filename          | "{{ azurecli_app_name }}"                                                                                                  | Name of the repository file that will be stored at `/etc/apt/sources.list.d/` on Debian based systems. Defaults to the variable value for "{{ azurecli_app_name }}" which is `azure-cli` .
-azurecli_repo_el_name                  | azure-cli                                                                                                                  | Repository name for Azure CLI on EL based systems.
-azurecli_repo_el_description           | Azure CLI                                                                                                                  | Description to be added in EL based repository file for Azure CLI.
-azurecli_repo_el                       | <https://packages.microsoft.com/yumrepos/azure-cli>                                                                        | Repository `baseurl` for Azure CLI on EL based systems.
-azurecli_repo_el_gpgcheck              | yes                                                                                                                        | Boolean for whether to perform gpg check against Azure CLI on EL based systems.
-azurecli_repo_el_enabled               | yes                                                                                                                        | Boolean for whether to set Azure CLI repo as 'enabled' on EL based systems.
-azurecli_repo_desired_state            | present                                                                                                                    | `present` indicates creating the repository file if it doesn't exist on Debian or EL based systems. Alternative is `absent` (not recommended as it will prevent from installation of **azure-cli** pacakge).
-azurecli_repo_el_filename              | "{{ azurecli_app_name }}"                                                                                                  | Name of the repository file that will be stored at `/etc/yum/sources.list.d/` on EL based systems. Defaults to the variable value for "{{ azurecli_app_name }}" which is `azure-cli` .
+Variable                               | Description
+-------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+azurecli_pre_reqs_debian               | Package required by Azure CLI on Debain based systems.
+azurecli_pre_reqs_debian_desired_state | State of the azurecli_pre_reqs_debian_desired_state packages. Whether to install, verify if available or to uninstall (i.e. ansible apt module values: `present`, `latest`, or `absent`)
+azurecli_app_name                      | Name of Azure CLI package i.e. `azure-cli`
+azurecli_desired_state                 | State of the azurecli_app_name package (i.e. `azure-cli` package itself.). Whether to install, verify if available or to uninstall (i.e. ansible apt module values: `present`, `latest`, or `absent`)
+azurecli_debian_gpg_key                | Azure CLI GPG required on Debian based systems.
+azurecli_el_gpg_key                    | Azure CLI GPG required on EL based systems.
+azurecli_repo_debian                   | Repository URL for Debian based systems. Utilized facts such as `ansible_architecture`.
+azurecli_repo_debian_when_x86_64       | This variable is used only against systems that are x86_64 type as the architecture is overridden to `arch=amd64` as per Azure CLI's Installation steps.
+azurecli_repo_debian_filename          | Name of the repository file that will be stored at `/etc/apt/sources.list.d/` on Debian based systems. Defaults to the variable value for "{{ azurecli_app_name }}" which is `azure-cli` .
+azurecli_repo_el_name                  | Repository name for Azure CLI on EL based systems.
+azurecli_repo_el_description           | Description to be added in EL based repository file for Azure CLI.
+azurecli_repo_el                       | Repository `baseurl` for Azure CLI on EL based systems.
+azurecli_repo_el_gpgcheck              | Boolean for whether to perform gpg check against Azure CLI on EL based systems.
+azurecli_repo_el_enabled               | Boolean for whether to set Azure CLI repo as 'enabled' on EL based systems.
+azurecli_repo_desired_state            | `present` indicates creating the repository file if it doesn't exist on Debian or EL based systems. Alternative is `absent` (not recommended as it will prevent from installation of **azure-cli** pacakge).
+azurecli_repo_el_filename              | Name of the repository file that will be stored at `/etc/yum/sources.list.d/` on EL based systems. Defaults to the variable value for "{{ azurecli_app_name }}" which is `azure-cli` .
 
 ## Dependencies
 
@@ -99,4 +99,4 @@ For customizing behavior of role (i.e. un-installation of **azure-cli** package)
 
 ## Author Information
 
-This role was created by [Ali Muhammad](https://www.linkedin.com/in/ali-muhammad-759791130/).
+This role was created by [Ali Muhammad](https://www.alimuhammad.dev/).
