@@ -50,14 +50,14 @@ azurecli_debian_gpg_key                | Azure CLI GPG required on Debian based 
 azurecli_el_gpg_key                    | Azure CLI GPG required on EL based systems.
 azurecli_repo_debian                   | Repository URL for Debian based systems. Utilized facts such as `ansible_architecture`.
 azurecli_repo_debian_when_x86_64       | This variable is used only against systems that are x86_64 type as the architecture is overridden to `arch=amd64` as per Azure CLI's Installation steps.
-azurecli_repo_debian_filename          | Name of the repository file that will be stored at `/etc/apt/sources.list.d/` on Debian based systems. Defaults to the variable value for "{{ azurecli_app_name }}" which is `azure-cli` .
+azurecli_repo_debian_filename          | Name of the repository file that will be stored at `/etc/apt/sources.list.d/` on Debian based systems.
 azurecli_repo_el_name                  | Repository name for Azure CLI on EL based systems.
 azurecli_repo_el_description           | Description to be added in EL based repository file for Azure CLI.
 azurecli_repo_el                       | Repository `baseurl` for Azure CLI on EL based systems.
 azurecli_repo_el_gpgcheck              | Boolean for whether to perform gpg check against Azure CLI on EL based systems.
 azurecli_repo_el_enabled               | Boolean for whether to set Azure CLI repo as 'enabled' on EL based systems.
 azurecli_repo_desired_state            | `present` indicates creating the repository file if it doesn't exist on Debian or EL based systems. Alternative is `absent` (not recommended as it will prevent from installation of **azure-cli** pacakge).
-azurecli_repo_el_filename              | Name of the repository file that will be stored at `/etc/yum/sources.list.d/` on EL based systems. Defaults to the variable value for "{{ azurecli_app_name }}" which is `azure-cli` .
+azurecli_repo_el_filename              | Name of the repository file that will be stored at `/etc/yum/sources.list.d/` on EL based systems.
 
 ## Dependencies
 
