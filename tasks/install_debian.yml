@@ -2,25 +2,25 @@
 # tasks file for azurecli | Debian/Ubuntu Family
 
 - name: Debian/Ubuntu Family | Install python3-apt
-  apt:
+  ansible.builtin.apt:
     name: python3-apt
     state: present
     force_apt_get: yes
     update_cache: yes
 
 - name: Debian/Ubuntu Family | Installing {{ azurecli_pre_reqs_debian }} for {{ azurecli_app_name }} .
-  apt:
+  ansible.builtin.apt:
     name: "{{ azurecli_pre_reqs_debian }}"
     state: "{{ azurecli_pre_reqs_debian_desired_state }}"
     force_apt_get: yes
 
 - name: Debian/Ubuntu Family | Add gpg signing key for {{ azurecli_app_name }}
-  apt_key:
+  ansible.builtin.ansible.builtin.apt_key:
     url: "{{ azurecli_debian_gpg_key }}"
     state: present
 
 - name: Debian/Ubuntu Family | Adding repository {{ azurecli_repo_debian }}
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "{{ azurecli_repo_debian }}"
     state: "{{ azurecli_repo_desired_state }}"
     filename: "{{ azurecli_repo_debian_filename }}"
@@ -29,7 +29,7 @@
   when: ansible_architecture != 'x86_64'
 
 - name: Debian/Ubuntu Family | Adding repository {{ azurecli_repo_debian_when_x86_64 }}
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "{{ azurecli_repo_debian_when_x86_64 }}"
     state: "{{ azurecli_repo_desired_state }}"
     filename: "{{ azurecli_repo_debian_filename }}"
@@ -38,7 +38,7 @@
   when: ansible_architecture == 'x86_64'
 
 - name: Debian/Ubuntu Family | Installing {{ azurecli_app_name }}
-  apt:
+  ansible.builtin.apt:
     name: "{{ azurecli_app_name }}"
     state: "{{ azurecli_desired_state }}"
     force_apt_get: yes
