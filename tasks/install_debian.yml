@@ -8,14 +8,14 @@
     force_apt_get: yes
     update_cache: yes
 
-- name: Debian/Ubuntu Family | Installing {{ azurecli_pre_reqs_debian }} for {{ azurecli_app_name }} .
+- name: Debian/Ubuntu Family | Installing {{ azurecli_pre_reqs_debian }} for {{ azurecli_app_name }}
   ansible.builtin.apt:
     name: "{{ azurecli_pre_reqs_debian }}"
     state: "{{ azurecli_pre_reqs_debian_desired_state }}"
     force_apt_get: yes
 
 - name: Debian/Ubuntu Family | Add gpg signing key for {{ azurecli_app_name }}
-  ansible.builtin.ansible.builtin.apt_key:
+  ansible.builtin.apt_key:
     url: "{{ azurecli_debian_gpg_key }}"
     state: present
 
